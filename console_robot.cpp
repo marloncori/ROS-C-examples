@@ -9,7 +9,6 @@ void goRight(const int*, std::vector<std::string>, std::vector<std::string>, std
 
 int main(){
 	
-	system("color 3e");
 	std::chrono::milliseconds timespan(2000);
 	
 	std::string lines = "->->->->->->->->->->";
@@ -32,7 +31,7 @@ int main(){
 	std::this_thread::sleep_for(timespan);
 	std::cout << "\tThe robot is moving forward!" << std::endl;
 	
-	const int ahead = 7; 
+	const int ahead = forward.size(); 
 	iterate(&ahead, forward, &timespan);
 	
 	std::cout <<"\n It has moved " << ahead << " steps." << std::endl;
@@ -40,21 +39,21 @@ int main(){
 	
 	std::cout << "\tNow the robot is turning right!" << std::endl;
 	
-	const int turn = 6; 
+	const int turn = down.size(); 
 	goRight(&turn, down, right, &timespan);
     
 	std::cout <<"\n It has moved " << turn << " steps." << std::endl;
 	std::this_thread::sleep_for(timespan);
 	
 	std::cout << "\tNow the robot is moving backwards!" << std::endl;
-	const int repeat = 5; 
+	const int repeat = backward.size(); 
 	iterate(&repeat, backward, &timespan);
     
     std::cout <<"\n It has reversed " << repeat << " steps." << std::endl;
     std::this_thread::sleep_for(timespan);
     
     std::cout <<"\t Thank you by now! " << std::endl;
-	system("pause");
+
 	return 0;
 }
 
