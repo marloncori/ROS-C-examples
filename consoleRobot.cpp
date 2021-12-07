@@ -1,15 +1,11 @@
 #include<iostream>
 #include<cstdlib>
 #include<vector>
-#include<chrono>
-#include<thread>
 
-void iterate(size_t, std::vector<std::string>, std::chrono::milliseconds);
-void goRight(size_t, std::vector<std::string>, std::vector<std::string>, std::chrono::milliseconds);
+void iterate(size_t, std::vector<std::string>);
+void goRight(size_t, std::vector<std::string>);
 
 int main(){
-	
-	std::chrono::milliseconds timespan(2000);
 	
 	std::string lines = "->->->->->->->->->->";
 	std::string back = "<-<-<-<-<-<-<-<-<-<-";
@@ -32,55 +28,48 @@ int main(){
 	std::cout << "\tThe robot is moving forward!" << std::endl;
 	
 	size_t ahead = forward.size(); 
-	iterate(ahead, forward, timespan);
+	iterate(ahead, forward);
 	
 	std::cout <<"\n It has moved " << ahead << " steps." << std::endl;
-	std::this_thread::sleep_for(timespan);
 	
 	std::cout << "\tNow the robot is turning right!" << std::endl;
 	
 	size_t turn = down.size(); 
-	goRight(turn, down, right, timespan);
+	goRight(turn, down, right);
     
 	std::cout <<"\n It has moved " << turn << " steps." << std::endl;
-	std::this_thread::sleep_for(timespan);
 	
 	std::cout << "\tNow the robot is moving backwards!" << std::endl;
 	size_t repeat = backward.size(); 
-	iterate(repeat, backward, timespan);
+	iterate(repeat, backward);
     
     std::cout <<"\n It has reversed " << repeat << " steps." << std::endl;
-    std::this_thread::sleep_for(timespan);
     
     std::cout <<"\t Thank you by now! " << std::endl;
 
 	return 0;
 }
 
-void iterate(size_t times, std::vector<std::string> array, std::chrono::milliseconds delay){	
+void iterate(size_t times, std::vector<std::string> array){	
    for(std::vector<int>::size_type i = 0; i != times; i++){
 		if(i == 0){
 		std::cout << "\n\t" << array[i] << array[i+1];
-		std::this_thread::sleep_for(delay);
 	  } else if((i < times) && (i+1 < times)){
 	  	std::cout << array[i] << array[i+1];
-	  	std::this_thread::sleep_for(delay);
 	  } else {
 		break;
           }
     }
 }
 
-void goRight(size_t times, std::vector<std::string> array1, std::vector<std::string> array2, std::chrono::milliseconds delay){	
+void goRight(size_t times, std::vector<std::string> array1, std::vector<std::string> array2){	
     for(std::vector<int>::size_type i = 0 ; i != times; i++){
 	    if(i == 0){
 		std::cout << "\n\t" << array1[i];
 		std::cout << "\n\t" << array2[i];
-		std::this_thread::sleep_for(delay);
 	     } else {
 	  	std::cout << array1[i];
 	  	std::cout << array2[i];
-	  	std::this_thread::sleep_for(delay);
 	   }
     }  
 }
