@@ -62,7 +62,7 @@ void iterate(const int* times, std::vector<std::string> array, std::chrono::mill
 		if(i == 0){
 		std::cout << "\n\t" << array[i] << array[i+1];
 		std::this_thread::sleep_for(*delay);
-	  } else {
+	  } else if((i < *times) && (i+1 < *times)){
 	  	std::cout << array[i] << array[i+1];
 	  	std::this_thread::sleep_for(*delay);
 	  }
@@ -71,16 +71,14 @@ void iterate(const int* times, std::vector<std::string> array, std::chrono::mill
 
 void goRight(const int* times, std::vector<std::string> array1, std::vector<std::string> array2, std::chrono::milliseconds* delay){	
    for(size_t i{0}; i < *times; i++){
-   	  for(size_t j{0}; j < *times; j++){
 		if(i == 0 && j == 0){
 		std::cout << "\n\t" << array1[i];
-		std::cout << "\n\t" << array2[j];
+		std::cout << "\n\t" << array2[i];
 		std::this_thread::sleep_for(*delay);
 	   } else {
 	  	std::cout << array1[i];
-	  	std::cout << array2[j];
+	  	std::cout << array2[i];
 	  	std::this_thread::sleep_for(*delay);
 	   }
-	  } 
-  }  
+     }  
 }
