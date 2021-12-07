@@ -58,7 +58,7 @@ int main(){
 }
 
 void iterate(size_t times, std::vector<std::string> array, std::chrono::milliseconds delay){	
-   for(size_t i{0}; i < times; i++){
+   for(std::vector<int>::size_type i = 0; i != times; i++){
 		if(i == 0){
 		std::cout << "\n\t" << array[i] << array[i+1];
 		std::this_thread::sleep_for(delay);
@@ -72,7 +72,7 @@ void iterate(size_t times, std::vector<std::string> array, std::chrono::millisec
 }
 
 void goRight(size_t times, std::vector<std::string> array1, std::vector<std::string> array2, std::chrono::milliseconds delay){	
-    for(size_t i{0}; i < times; i++){
+    for(std::vector<int>::size_type i = 0 ; i != times; i++){
 	    if(i == 0){
 		std::cout << "\n\t" << array1[i];
 		std::cout << "\n\t" << array2[i];
