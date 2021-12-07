@@ -58,7 +58,7 @@ int main(){
 }
 
 void iterate(const int* times, std::vector<std::string> array, std::chrono::milliseconds* delay){	
-   for(size_t i{0}; i <= *times; i++){
+   for(size_t i{0}; i < *times; i++){
 		if(i == 0){
 		std::cout << "\n\t" << array[i] << array[i+1];
 		std::this_thread::sleep_for(*delay);
@@ -70,8 +70,8 @@ void iterate(const int* times, std::vector<std::string> array, std::chrono::mill
 }
 
 void goRight(const int* times, std::vector<std::string> array1, std::vector<std::string> array2, std::chrono::milliseconds* delay){	
-   for(size_t i{0}; i <= *times; i++){
-   	  for(size_t j{0}; j <= *times; j++){
+   for(size_t i{0}; i < *times; i++){
+   	  for(size_t j{0}; j < *times; j++){
 		if(i == 0 && j == 0){
 		std::cout << "\n\t" << array1[i];
 		std::cout << "\n\t" << array2[j];
