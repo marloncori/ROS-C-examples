@@ -65,13 +65,14 @@ void iterate(size_t times, std::vector<std::string> array, std::chrono::millisec
 	  } else if((i < times) && (i+1 < times)){
 	  	std::cout << array[i] << array[i+1];
 	  	std::this_thread::sleep_for(delay);
-	  }
+	  } else {
+		break;
 	}
 }
 
 void goRight(size_t times, std::vector<std::string> array1, std::vector<std::string> array2, std::chrono::milliseconds delay){	
    for(size_t i{0}; i < times; i++){
-	    if(i == 0 && j == 0){
+	    if(i == 0){
 		std::cout << "\n\t" << array1[i];
 		std::cout << "\n\t" << array2[i];
 		std::this_thread::sleep_for(delay);
